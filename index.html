@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours : Identité Professionnelle en Vidéoprotection</title>
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            /* Palette "Sécurité & Sérieux" */
+            --primary-color: #0f2c4c; /* Bleu Nuit */
+            --secondary-color: #4a6fa5; /* Bleu Doux */
+            --accent-color: #d4a017; /* Or pour les points importants */
+            --bg-color: #f4f6f8; /* Gris très clair pour le fond */
+            --content-bg: #ffffff;
+            --text-color: #333333;
+            --text-light: #666666;
+            
+            /* Couleurs des boîtes pédagogiques */
+            --box-retainer-border: #2b6cb0; /* Bleu */
+            --box-retainer-bg: #ebf8ff;
+            --box-error-border: #c53030; /* Rouge */
+            --box-error-bg: #fff5f5;
+            --box-tip-border: #2f855a; /* Vert */
+            --box-tip-bg: #f0fff4;
+            --box-example-border: #718096; /* Gris */
+            --box-example-bg: #edf2f7;
+
+            /* Typographie */
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --spacing-unit: 1.5rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 4rem;
+        }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* --- HEADER & TOOLBAR --- */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .toolbar {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        audio {
+            height: 40px;
+            max-width: 300px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.6rem 1.2rem;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* --- CONTENT STYLING --- */
+        article {
+            background: var(--content-bg);
+            padding: 2rem 3rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        h3 {
+            color: #2d3748;
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h4 {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- PEDAGOGICAL BOXES --- */
+        .box {
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+            border-left-width: 5px;
+            border-left-style: solid;
+            position: relative;
+        }
+
+        .box h4 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* À retenir */
+        .box.retenir {
+            background-color: var(--box-retainer-bg);
+            border-left-color: var(--box-retainer-border);
+        }
+        .box.retenir h4 { color: var(--box-retainer-border); }
+
+        /* Erreur fréquente */
+        .box.erreur {
+            background-color: var(--box-error-bg);
+            border-left-color: var(--box-error-border);
+        }
+        .box.erreur h4 { color: var(--box-error-border); }
+
+        /* Astuce */
+        .box.astuce {
+            background-color: var(--box-tip-bg);
+            border-left-color: var(--box-tip-border);
+        }
+        .box.astuce h4 { color: var(--box-tip-border); }
+
+        /* Exemple */
+        .box.exemple {
+            background-color: var(--box-example-bg);
+            border-left-color: var(--box-example-border);
+            font-style: italic;
+        }
+        .box.exemple h4 { color: var(--box-example-border); font-style: normal; }
+
+        /* --- SYNTHESIS --- */
+        .synthesis {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+        .synthesis h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.2);
+            margin-top: 0;
+        }
+        .synthesis ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .synthesis li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        .synthesis li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* --- QUIZ BUTTON AREA --- */
+        .quiz-container {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px dashed #e2e8f0;
+        }
+        .btn-quiz {
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            box-shadow: 0 4px 6px rgba(212, 160, 23, 0.3);
+        }
+        .btn-quiz:hover {
+            background-color: #b8860b;
+            transform: translateY(-2px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.5rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            article { padding: 1.5rem; }
+            .toolbar { flex-direction: column; align-items: stretch; }
+            .toolbar-group { flex-direction: column; }
+            audio { width: 100%; }
+            h1 { font-size: 1.5rem; }
+            .btn-quiz { width: 100%; border-radius: 4px; }
+        }
+
+        /* --- PRINT STYLES (PDF GENERATION) --- */
+        @media print {
+            @page {
+                size: A4;
+                margin: 2cm;
+            }
+
+            body {
+                background-color: white;
+                color: black;
+                font-size: 11pt;
+                line-height: 1.4;
+            }
+
+            .container { width: 100%; max-width: none; margin: 0; padding: 0; }
+            
+            /* Masquer les éléments interactifs */
+            .toolbar, .quiz-container, footer { display: none !important; }
+
+            /* Réinitialiser l'en-tête pour l'impression */
+            header {
+                background-color: white;
+                color: black;
+                border-bottom: 2px solid black;
+                padding: 0;
+                margin-bottom: 1rem;
+            }
+            header h1 { font-size: 18pt; color: black; margin-bottom: 0.2rem; }
+            header p { color: #444; font-size: 11pt; }
+
+            /* Layout contenu */
+            article {
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+                background: white;
+            }
+
+            /* Titres */
+            h2 {
+                color: black;
+                font-size: 14pt;
+                border-bottom: 1px solid #ccc;
+                margin-top: 1.5rem;
+                break-after: avoid;
+            }
+            h3 {
+                color: #333;
+                font-size: 12pt;
+                break-after: avoid;
+            }
+
+            /* Boîtes pédagogiques : Économes en encre */
+            .box {
+                background-color: white !important;
+                border: 1px solid #ccc;
+                border-left-width: 4px;
+                break-inside: avoid;
+                box-shadow: none;
+                margin: 1rem 0;
+                padding: 0.8rem;
+            }
+            
+            .box h4 { font-size: 11pt; color: black !important; text-transform: uppercase; }
+            
+            /* Synthèse */
+            .synthesis {
+                background-color: white;
+                color: black;
+                border: 2px solid black;
+            }
+            .synthesis h2 { color: black; border-bottom: 1px solid #ccc; }
+            .synthesis li::before { color: black; }
+
+            /* Liens */
+            a { text-decoration: none; color: black; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- En-tête -->
+        <header>
+            <h1>Identité Professionnelle</h1>
+            <p>Module : Construire une identité professionnelle solide en vidéoprotection et télésurveillance</p>
+        </header>
+
+        <!-- Barre d'outils (Audio, PDF, Imprimer) -->
+        <div class="toolbar no-print">
+            <div class="toolbar-group">
+                <!-- Zone Audio -->
+                <div>
+                    <small style="display:block; margin-bottom:0.2rem; font-weight:bold; color:var(--primary-color);">Écouter le cours :</small>
+                    <audio controls>
+                        <source src="Valoriser son Image Professionnelle.mp3" type="audio/mpeg">
+                        Votre navigateur ne supporte pas l'élément audio.
+                    </audio>
+                </div>
+            </div>
+            
+            <div class="toolbar-group">
+                <!-- Lien PDF Externe -->
+                <a href="Valoriser son Image Professionnelle.pdf" target="_blank" class="btn btn-outline" title="Ouvrir le PDF associé dans un nouvel onglet">
+                    <svg style="width:18px; height:18px; margin-right:8px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    Voir le PDF ressource
+                </a>
+                <!-- Bouton Téléchargement PDF / Impression -->
+                <button onclick="window.print()" class="btn">
+                    <svg style="width:18px; height:18px; margin-right:8px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Télécharger / Imprimer (PDF)
+                </button>
+            </div>
+        </div>
+
+        <!-- Contenu du cours -->
+        <main>
+            <article>
+                <section class="introduction">
+                    <p><strong>Introduction</strong><br>
+                    L’identité professionnelle est un levier majeur d’employabilité dans les métiers de la sécurité privée, et encore plus dans la vidéoprotection et la télésurveillance, où la confiance, la rigueur et la posture sont essentielles.<br>
+                    Ce cours vise à aider chaque stagiaire à se positionner clairement, à valoriser ses compétences, et à se présenter de manière professionnelle et convaincante.</p>
+                </section>
+
+                <hr style="border:0; border-top:1px solid #eee; margin: 2rem 0;">
+
+                <!-- Partie 1 -->
+                <h2>1. Comprendre la réalité du secteur de la vidéoprotection et de la télésurveillance</h2>
+                
+                <h3>1.1. Les missions essentielles du secteur</h3>
+                <ul>
+                    <li><strong>Surveillance active</strong> — Observer, analyser, détecter les anomalies en temps réel.</li>
+                    <li><strong>Traitement des alarmes</strong> — Prioriser, qualifier, décider, transmettre.</li>
+                    <li><strong>Application des procédures</strong> — Respect strict des protocoles internes et réglementaires.</li>
+                    <li><strong>Communication professionnelle</strong> — Rendre compte, alerter, transmettre des informations fiables.</li>
+                </ul>
+
+                <aside class="box retenir">
+                    <h4><svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg> À retenir</h4>
+                    <p>La valeur d’un opérateur repose sur sa fiabilité, sa vigilance, sa capacité d’analyse et son respect absolu des procédures.</p>
+                </aside>
+
+                <h3>1.2. Les contraintes et exigences du secteur</h3>
+                <ul>
+                    <li>Travail en horaires décalés, nuits, week-ends.</li>
+                    <li>Forte responsabilité : protection des biens, des personnes, des infrastructures.</li>
+                    <li>Confidentialité totale : aucune information ne doit sortir du cadre professionnel.</li>
+                    <li>Gestion du stress lors d’événements inhabituels ou critiques.</li>
+                </ul>
+
+                <aside class="box erreur">
+                    <h4><svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Erreur fréquente</h4>
+                    <p>Dire en entretien : « Je veux éviter le stress ».<br>
+                    Dans ce métier, on montre plutôt sa capacité à gérer le stress avec méthode.</p>
+                </aside>
+
+                <!-- Partie 2 -->
+                <h2>2. Définir son positionnement professionnel</h2>
+                
+                <h3>2.1. Qu’est-ce que le positionnement professionnel ?</h3>
+                <p>C’est la manière dont un candidat se présente, se distingue et se projette dans un poste.<br>
+                Il répond à trois questions :</p>
+                <ul>
+                    <li>Qui je suis professionnellement ?</li>
+                    <li>Ce que je sais faire ?</li>
+                    <li>Ce que je veux apporter à l’entreprise ?</li>
+                </ul>
+
+                <h3>2.2. Construire son positionnement</h3>
+                <ul>
+                    <li><strong>Identifier ses forces</strong> : vigilance, calme, logique, réactivité.</li>
+                    <li><strong>Relier ses compétences au métier</strong> : traitement d’images, analyse, gestion d’alarmes.</li>
+                    <li><strong>Clarifier son objectif</strong> : opérateur vidéo, opérateur télésurveillance, superviseur à terme.</li>
+                </ul>
+
+                <aside class="box exemple">
+                    <h4>Exemple</h4>
+                    <p>« Je suis un opérateur en vidéoprotection rigoureux et attentif, formé au traitement des images et à la gestion des situations sensibles. Mon objectif est d’intégrer une équipe où je pourrai contribuer à la sécurité des sites grâce à ma vigilance et ma capacité d’analyse. »</p>
+                </aside>
+
+                <!-- Partie 3 -->
+                <h2>3. Construire un pitch professionnel clair et convaincant</h2>
+                
+                <h3>3.1. Structure du pitch (30 à 45 secondes)</h3>
+                <ul>
+                    <li>Accroche professionnelle</li>
+                    <li>Compétences clés</li>
+                    <li>Expérience ou formation</li>
+                    <li>Ce que vous apportez</li>
+                    <li>Objectif professionnel</li>
+                </ul>
+
+                <h3>3.2. Exemple de pitch</h3>
+                <aside class="box exemple">
+                    <p>« Bonjour, je suis opérateur en vidéoprotection, formé au traitement des images, à la détection d’anomalies et à la gestion des situations sensibles. J’ai une bonne capacité d’analyse, je reste calme même sous pression et je maîtrise les procédures de levée de doute. Je souhaite intégrer une équipe où je pourrai contribuer à la sécurité des sites grâce à ma vigilance et ma rigueur. »</p>
+                </aside>
+
+                <aside class="box astuce">
+                    <h4><svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg> Astuce</h4>
+                    <p>S’entraîner à voix haute, chronométrer, simplifier. Un bon pitch est fluide, court, professionnel.</p>
+                </aside>
+
+                <!-- Partie 4 -->
+                <h2>4. Les éléments essentiels pour se présenter efficacement</h2>
+                
+                <h3>4.1. Les points clés à mettre en avant</h3>
+                <ul>
+                    <li>Rigueur et vigilance</li>
+                    <li>Respect des procédures</li>
+                    <li>Gestion du stress</li>
+                    <li>Analyse et prise de décision</li>
+                    <li>Communication professionnelle</li>
+                </ul>
+
+                <h3>4.2. Les formulations efficaces</h3>
+                <ul>
+                    <li>« Je suis attentif aux détails et je sais analyser rapidement une situation. »</li>
+                    <li>« Je respecte strictement les protocoles et la confidentialité. »</li>
+                    <li>« Je garde mon sang-froid et j’applique les procédures même en situation tendue. »</li>
+                </ul>
+
+                <aside class="box erreur">
+                    <h4><svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Erreur fréquente</h4>
+                    <p>Trop parler de soi sans relier ses compétences au poste visé.</p>
+                </aside>
+
+                <!-- Partie 5 -->
+                <h2>5. Les compétences clés à mettre en avant</h2>
+                
+                <h3>5.1. Compétences techniques</h3>
+                <ul>
+                    <li>Levée de doute vidéo</li>
+                    <li>Traitement des alarmes</li>
+                    <li>Utilisation de logiciels de supervision</li>
+                    <li>Analyse d’images</li>
+                    <li>Rédaction de rapports</li>
+                </ul>
+
+                <h3>5.2. Compétences comportementales</h3>
+                <ul>
+                    <li>Calme et sang-froid</li>
+                    <li>Concentration prolongée</li>
+                    <li>Esprit d’analyse</li>
+                    <li>Communication claire</li>
+                    <li>Fiabilité et ponctualité</li>
+                </ul>
+
+                <aside class="box retenir">
+                    <h4><svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg> À retenir</h4>
+                    <p>Dans ce secteur, les soft skills comptent autant que les compétences techniques.</p>
+                </aside>
+
+                <!-- Partie 6 -->
+                <h2>6. Les attitudes professionnelles attendues</h2>
+                
+                <h3>6.1. Posture et comportement</h3>
+                <ul>
+                    <li>Neutralité, objectivité, absence de jugement.</li>
+                    <li>Confidentialité absolue.</li>
+                    <li>Respect des consignes et hiérarchie.</li>
+                    <li>Disponibilité et ponctualité.</li>
+                </ul>
+
+                <h3>6.2. Attitudes en situation sensible</h3>
+                <ul>
+                    <li>Garder son calme.</li>
+                    <li>Appliquer la procédure sans improviser.</li>
+                    <li>Communiquer clairement et rapidement.</li>
+                    <li>Documenter les faits.</li>
+                </ul>
+
+                <aside class="box astuce">
+                    <h4><svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg> Astuce</h4>
+                    <p>Les employeurs recherchent des personnes fiables, pas des héros. La procédure est votre meilleure alliée.</p>
+                </aside>
+
+                <!-- Synthèse -->
+                <section class="synthesis">
+                    <h2>Synthèse</h2>
+                    <h4>Messages clés</h4>
+                    <ul>
+                        <li>L’identité professionnelle est un outil stratégique pour convaincre un employeur.</li>
+                        <li>Le secteur exige rigueur, confidentialité, vigilance et gestion du stress.</li>
+                        <li>Un bon pitch permet de se présenter clairement et efficacement.</li>
+                        <li>Les compétences techniques doivent être associées à une posture professionnelle irréprochable.</li>
+                        <li>La cohérence entre discours, attitudes et objectifs renforce l’employabilité.</li>
+                    </ul>
+                </section>
+
+                <!-- BOUTON QUIZ AVEC LE LIEN ACTIF -->
+                <div class="quiz-container">
+                    <a href="https://francoismog.github.io/TP-OVT-quiz-Valoriser-son-image-profesionnelle/" target="_blank" class="btn btn-quiz">
+                        <svg style="width:24px; height:24px; margin-right:10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                        Lancer le Quizz
+                    </a>
+                </div>
+
+            </article>
+        </main>
+
+        <footer>
+            <p>&copy; Formation Sécurité Privée - Vidéoprotection & Télésurveillance</p>
+        </footer>
+    </div>
+
+</body>
+</html>
